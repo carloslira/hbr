@@ -1,17 +1,9 @@
-import HomePage from '../views/Home';
+import MainPage from '../views/Main';
 
 const appRoutes = [
     {
-        path: '/home',
-        navbarName: 'Home',
-        sidebarName: 'Home',
-        component: HomePage
-    },
-    {
         path: '/',
-        to: '/home',
-        redirect: true,
-        navbarName: 'Redirect'
+        component: MainPage
     }
 ];
 

@@ -2,9 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import {
+	createBrowserHistory
+} from 'history';
+
+import {
     Route,
     Switch,
-    HashRouter
+    Router
 } from 'react-router-dom';
 
 import {
@@ -15,10 +19,13 @@ import indexRoutes from './routes/index';
 
 import theme from './styles/theme';
 
+import './assets/css/custom.css?v=1.0.0';
 import './assets/css/normalize.css?v=8.0.0';
 
+const hist = createBrowserHistory();
+
 ReactDOM.render(
-    <HashRouter>
+    <Router history={hist}>
         <ThemeProvider theme={theme}>
             <Switch>
                 {indexRoutes.map((prop, key) => {
@@ -26,6 +33,6 @@ ReactDOM.render(
                 })}
             </Switch>
         </ThemeProvider>
-    </HashRouter>,
+    </Router>,
     document.getElementById('root')
 );

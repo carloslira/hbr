@@ -1,0 +1,16 @@
+.aws-sld {
+	--loader-bar-color: #0269B8;
+	--organic-arrow-color: #0269B8;
+	--control-bullet-color: #0269B8;
+	--control-bullet-active-color: #0269B8;
+}
+
+.aws-sld,
+.aws-sld__wrapper {
+	height: 100%;
+}
+
+.aws-sld__bullets {
+	z-index: 2;
+	bottom: 50px;
+}
