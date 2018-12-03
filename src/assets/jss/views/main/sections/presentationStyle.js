@@ -1,8 +1,15 @@
 import {
 	grayColor,
+    transition,
 	navbarHeight,
-	darkGrayColor
+    primaryColor,
+	darkGrayColor,
+    lightPrimaryColor
 } from '../../../theme';
+
+import image_1 from '../../../../../assets/img/main/sections/presentation/image_1.jpg';
+import image_2 from '../../../../../assets/img/main/sections/presentation/image_2.jpg';
+import image_3 from '../../../../../assets/img/main/sections/presentation/image_3.jpg';
 
 const presentationStyle = theme => ({
 	container: {
@@ -10,7 +17,13 @@ const presentationStyle = theme => ({
 		justifyContent: 'center',
 		padding: '50px 70px 110px',
 		height: `calc(100vh - ${navbarHeight + 160}px)`
-	},
+    },
+    grid: {
+        height: '100%'
+    },
+    row: {
+        height: '100%'
+    },
 	col: {
 		padding: '0'
 	},
@@ -53,38 +66,40 @@ const presentationStyle = theme => ({
 	descriptionUnderline: {
 		width: '100%',
 		height: '1px',
-		backgroundColor: '#00F6FF',
-		transformOrigin: '100% 50%'
-	},
+		transformOrigin: '100% 50%',
+		backgroundColor: lightPrimaryColor
+    },
+    sliderCol: {
+        height: '100%'
+    },
 	sliderContainer: {
-		position: 'relative'
-	},
-	sliderImagesContainer: {
-		display: 'table',
-		position: 'relative'
-	},
-	sliderImage: {
-		display: 'none',
-		maxWidth: '100%',
+        width: '100%',
+        height: '100%',
+        position: 'relative',
 		borderRadius: '20px',
 		backgroundOrigin: 'border-box',
 		border: 'double 5px transparent',
-		maxHeight: 'calc(100vh - 330px)',
 		backgroundClip: 'content-box, border-box',
-		backgroundImage: 'linear-gradient(white, white), radial-gradient(circle at top left, #00F6FF 50%, #0190FF 70%)'
-	},
-	activeSliderImage: {
-		display: 'block'
-	},
-	sliderImageOverlay: {
-		top: '5px',
-		left: '5px',
-		position: 'absolute',
-		borderRadius: '15px',
-		width: 'calc(100% - 10px)',
-		height: 'calc(100% - 15px)',
-		backgroundImage: 'linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 60%)'
-	},
+		backgroundImage: `linear-gradient(white, white), radial-gradient(circle at top left, ${lightPrimaryColor} 50%, ${primaryColor} 70%)`
+    },
+    sliderImage: {
+        ...transition,
+        width: '100%',
+        height: '100%',
+        borderRadius: '14px',
+		backgroundSize: 'cover',
+		backgroundPosition: 'center',
+		backgroundRepeat: 'no-repeat'
+    },
+    slide0: {
+        backgroundImage: `url(${image_1})`
+    },
+    slide1: {
+        backgroundImage: `url(${image_2})`
+    },
+    slide2: {
+        backgroundImage: `url(${image_3})`
+    },
 	sliderBulletsContainer: {
 		top: '0',
 		left: '0',
@@ -97,41 +112,29 @@ const presentationStyle = theme => ({
 	sliderBulletContainer: {
 		display: 'flex',
 		cursor: 'pointer',
-		marginLeft: '-18px',
+		marginLeft: '-20px',
 		alignItems: 'center',
 		'&:before': {
-			zIndex: '1',
-			left: '-18px',
-			width: '17px',
-			height: '34px',
+			left: '-25px',
+			width: '15px',
+			height: '30px',
 			content: '" "',
 			position: 'absolute',
-			border: '3px solid #00F6FF',
-			borderTopLeftRadius: '34px',
-			borderBottomLeftRadius: '34px'
-		},
-		'&:after': {
-			left: '-2px',
-			width: '17px',
-			height: '34px',
-			content: '" "',
-			position: 'absolute',
-			border: '3px solid white',
-			borderTopRightRadius: '34px',
-			borderLeftColor: 'transparent',
-			borderBottomRightRadius: '34px'
+			borderTopLeftRadius: '30px',
+            borderBottomLeftRadius: '30px',
+			border: `5px solid ${lightPrimaryColor}`
 		}
 	},
 	sliderBullet: {
+        ...transition,
 		zIndex: '1',
-		margin: '3px',
-		width: '34px',
-		height: '34px',
+		width: '30px',
+		height: '30px',
 		borderRadius: '50%',
-		backgroundColor: 'rgba(0, 0, 0, 0.3)'
+		backgroundColor: '#ECF9FF'
 	},
 	activeSliderBullet: {
-		backgroundColor: 'white'
+		backgroundColor: lightPrimaryColor
 	}
 });
 

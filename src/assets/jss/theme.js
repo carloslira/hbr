@@ -10,6 +10,7 @@ const defaultFont = {
 };
 
 const primaryColor = '#0269B8';
+const lightPrimaryColor = '#00F6FF';
 
 const grayColor = '#6D7A84';
 const darkGrayColor = '#061F33';
@@ -21,5 +22,6 @@ export {
 	navbarHeight,
     sidebarWidth,
     primaryColor,
-    darkGrayColor
+    darkGrayColor,
+    lightPrimaryColor
 };

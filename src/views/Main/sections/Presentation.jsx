@@ -6,95 +6,103 @@ import classNames from 'classnames';
 import injectSheet from 'react-jss';
 
 import {
-	Row,
-	Col,
-	Grid
+    Row,
+    Col,
+    Grid
 } from 'react-flexbox-grid';
 
 import P from '../../../components/P';
 
-import image_1 from '../../../assets/img/main/sections/presentation/image_1.jpg';
-import image_2 from '../../../assets/img/main/sections/presentation/image_2.jpg';
-import image_3 from '../../../assets/img/main/sections/presentation/image_3.jpg';
-import best_western_logo from '../../../assets/img/main/sections/presentation/best_western_logo.png';
+import highlights from '../../../variables/highlights';
 
 import presentationStyle from '../../../assets/jss/views/main/sections/presentationStyle';
 
 class Presentation extends React.Component {
 
-	state = {
-		selected: 0
-	};
+    sliderInterval = null;
 
-	render() {
-		const {
-			classes
-		} = this.props;
+    state = {
+        selected: 0
+    };
 
-		const {
-			selected
-		} = this.state;
+    componentDidMount() {
+        this.setSliderInterval();
+    }
 
-		return (
-			<div className={classes.container}>
-				<Grid fluid>
-					<Row>
-						<Col lg={5} className={classes.col}>
-							<Row className={classes.descriptionContainer}>
-								<Col lg={3} className={classes.descriptionIconContainer}>
-									<Anime opacity={[0, 1]} translateX={['-10', '0']} duration={300} easing="easeInOutQuart">
-										<img src={best_western_logo} className={classes.descriptionIcon} alt="Best Western" />
-									</Anime>
-								</Col>
-								<Col lg={9}>
-									<div className={classes.descriptionText}>
-										<Anime opacity={[0, 1]} translateX={['-10', '0']} delay={(e, i) => (i + 1) * 120} duration={300} easing="easeInOutQuart">
-											<div><P className={classes.descriptionTitle}>Vivá Porto de Galinhas</P></div>
-											<div><P className={classes.descriptionSubtitle}>Construção do hotel</P></div>
-										</Anime>
-									</div>
-								</Col>
-								<Anime scaleX={[0, 1]} delay={300} duration={500} easing="easeInOutQuart">
-									<div className={classes.descriptionUnderline} />
-								</Anime>
-							</Row>
-						</Col>
-						<Col lg={7} className={classes.col}>
-							<div className={classes.sliderContainer}>
-								<div className={classes.sliderImagesContainer}>
-									<img src={image_1} className={classNames(classes.sliderImage, selected === 0 ? classes.activeSliderImage : null)} alt="Slide" />
-									<img src={image_2} className={classNames(classes.sliderImage, selected === 1 ? classes.activeSliderImage : null)} alt="Slide" />
-									<img src={image_3} className={classNames(classes.sliderImage, selected === 2 ? classes.activeSliderImage : null)} alt="Slide" />
-									<div className={classes.sliderImageOverlay} />
-								</div>
-								<div className={classes.sliderBulletsContainer}>
-									<div className={classes.sliderBulletContainer} onClick={e => this.changeSlide(0)}>
-										<div className={classNames(classes.sliderBullet, selected === 0 ? classes.activeSliderBullet : null)} />
-									</div>
-									<div className={classes.sliderBulletContainer} onClick={e => this.changeSlide(1)}>
-										<div className={classNames(classes.sliderBullet, selected === 1 ? classes.activeSliderBullet : null)} />
-									</div>
-									<div className={classes.sliderBulletContainer} onClick={e => this.changeSlide(2)}>
-										<div className={classNames(classes.sliderBullet, selected === 2 ? classes.activeSliderBullet : null)} />
-									</div>
-								</div>
-							</div>
-						</Col>
-					</Row>
-				</Grid>
-			</div>
-		);
-	}
+    setSliderInterval = () => {
+        if (this.sliderInterval) {
+            clearInterval(this.sliderInterval);
+        }
 
-	changeSlide = index => {
-		this.setState({
-			selected: index
-		});
-	};
+        this.sliderInterval = setInterval(() => {
+            this.setState(prevState => ({
+                selected: prevState.selected === highlights.length - 1 ? 0 : prevState.selected + 1
+            }));
+        }, 10000);
+    };
+
+    render() {
+        const {
+            classes
+        } = this.props;
+
+        const {
+            selected
+        } = this.state;
+
+        return (
+            <div className={classes.container}>
+                <Grid fluid className={classes.grid}>
+                    <Row className={classes.row}>
+                        <Col lg={5} className={classes.col}>
+                            <Row className={classes.descriptionContainer}>
+                                <Col lg={3} className={classes.descriptionIconContainer}>
+                                    <Anime opacity={[0, 1]} translateX={['-10', '0']} delay={100} duration={500} easing="easeInOutQuart" key={Date.now()}>
+                                        <img {...highlights[selected].icon} className={classes.descriptionIcon} />
+                                    </Anime>
+                                </Col>
+                                <Col lg={9}>
+                                    <div className={classes.descriptionText}>
+                                        <Anime opacity={[0, 1]} translateX={['-10', '0']} delay={(e, i) => (i + 1) * 200} duration={500} easing="easeInOutQuart" key={Date.now()}>
+                                            <div><P className={classes.descriptionTitle}>{highlights[selected].title}</P></div>
+                                            <div><P className={classes.descriptionSubtitle}>{highlights[selected].subtitle}</P></div>
+                                        </Anime>
+                                    </div>
+                                </Col>
+                                <Anime scaleX={[0, 1]} delay={600} duration={700} easing="easeInOutQuart" key={Date.now()}>
+                                    <div className={classes.descriptionUnderline} />
+                                </Anime>
+                            </Row>
+                        </Col>
+                        <Col lg={7} className={classNames(classes.col, classes.sliderCol)}>
+                            <div className={classes.sliderContainer}>
+                                <div className={classNames(classes.sliderImage, classes[`slide${selected}`])} />
+                                <div className={classes.sliderBulletsContainer}>
+                                    {highlights.map((any, key) =>
+                                        <div className={classes.sliderBulletContainer} onClick={e => this.changeSlide(key)} key={key}>
+                                            <div className={classNames(classes.sliderBullet, selected === key ? classes.activeSliderBullet : null)} />
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        </Col>
+                    </Row>
+                </Grid>
+            </div>
+        );
+    }
+
+    changeSlide = index => {
+        this.setState({
+            selected: index
+        }, () => {
+            this.setSliderInterval();
+        });
+    };
 }
 
 Presentation.propTypes = {
-	classes: PropTypes.object.isRequired
+    classes: PropTypes.object.isRequired
 };
 
 export default injectSheet(presentationStyle)(Presentation);
