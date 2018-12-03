@@ -1,3 +1,7 @@
+body {
+	background-color: #ECF9FF;
+}
+
 .aws-sld {
 	--loader-bar-color: #0269B8;
 	--organic-arrow-color: #0269B8;

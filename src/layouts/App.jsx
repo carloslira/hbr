@@ -9,6 +9,8 @@ import {
 
 import injectSheet from 'react-jss';
 
+import Navbar from '../components/Navbar';
+
 import breakpoints from '../styles/breakpoints';
 
 import appRoutes from '../routes/app';
@@ -43,15 +45,18 @@ class App extends React.Component {
 		} = this.state;
 
 		return (
-			<Switch>
-				{appRoutes.map((props, key) => {
-					if (props.redirect) {
-						return <Redirect from={props.path} to={props.to} key={key} />;
-					}
+			<div className={classes.container}>
+				<Navbar />
+				<Switch>
+					{appRoutes.map((props, key) => {
+						if (props.redirect) {
+							return <Redirect from={props.path} to={props.to} key={key} />;
+						}
 
-					return <Route path={props.path} component={props.component} key={key} />;
-				})}
-			</Switch>
+						return <Route path={props.path} component={props.component} key={key} />;
+					})}
+				</Switch>
+			</div>
 		);
 	}
 

@@ -1,4 +1,4 @@
-const navbarHeight = 80;
+const navbarHeight = 170;
 const sidebarWidth = 256;
 
 const transition = {
@@ -6,22 +6,20 @@ const transition = {
 };
 
 const defaultFont = {
-    fontFamily: '"Pluto", "Helvetica", "Arial", sans-serif'
+    fontFamily: '"JosefinSans", "Helvetica", "Arial", sans-serif'
 };
 
 const primaryColor = '#0269B8';
 
-const grayColor = '#ABABAB';
-const darkGrayColor = '#4C4C4C';
-const lightGrayColor = '#F6F6F6';
+const grayColor = '#6D7A84';
+const darkGrayColor = '#061F33';
 
 export {
-    grayColor,
+	grayColor,
     transition,
 	defaultFont,
 	navbarHeight,
     sidebarWidth,
     primaryColor,
-    darkGrayColor,
-    lightGrayColor
+    darkGrayColor
 };

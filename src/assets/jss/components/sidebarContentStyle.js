@@ -29,7 +29,7 @@ const sidebarContentStyle = theme => ({
 		fontSize: '18px',
 		lineHeight: '18px',
 		fontWeight: 'bold',
-		fontFamily: '"Pluto"'
+		fontFamily: '"JosefinSans"'
     },
     listItemLink: {
 		...transition,

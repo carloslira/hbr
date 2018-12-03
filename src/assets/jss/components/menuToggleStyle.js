@@ -1,22 +1,29 @@
 import {
-	transition,
 	darkGrayColor
 } from '../theme';
 
 const menuToggleStyle = theme => ({
 	container: {
-		zIndex: '3',
-		top: '20px',
-		right: '20px',
-		position: 'absolute'
+		width: '52px',
+		height: '52px',
+		display: 'flex',
+		borderRadius: '50%',
+		border: `2px solid ${darkGrayColor}`
+	},
+	wrapper: {
+		margin: '0 auto',
+		alignSelf: 'center'
 	},
 	bar: {
-		...transition,
-		width: '35px',
-		height: '5px',
-		margin: '6px 0',
-		borderRadius: '3px',
+		height: '2px',
+		margin: '6px auto',
 		backgroundColor: darkGrayColor
+	},
+	tipBar: {
+		width: '28px'
+	},
+	middleBar: {
+		width: '36px'
 	}
 });
 

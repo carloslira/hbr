@@ -16,9 +16,12 @@ const MenuToggle = ({ ...props }) => {
 
 	return (
 		<a href="#toggle" className={classNames(className, classes.container)} onClick={onClick}>
-			<div className={classes.bar} />
-			<div className={classes.bar} />
-			<div className={classes.bar} />
+			<div className={classes.wrapper}>
+				<div className={classNames(classes.bar, classes.tipBar)} />
+				<div className={classNames(classes.bar, classes.middleBar)} />
+				<div className={classNames(classes.bar, classes.middleBar)} />
+				<div className={classNames(classes.bar, classes.tipBar)} />
+			</div>
 		</a>
 	);
 }

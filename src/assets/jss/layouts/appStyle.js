@@ -11,28 +11,26 @@ const appStyle = theme => ({
 	'@font-face': [
 		{
 			fontWeight: '300',
-			fontFamily: 'Pluto',
-			src: `url("${githubPrefix}/fonts/Pluto/HVD Fonts - PlutoLight.otf") format("opentype")`
+			fontFamily: 'JosefinSans',
+			src: `url("${githubPrefix}/fonts/JosefinSans/JosefinSans-Light.ttf") format("truetype")`
 		},
 		{
-			fontFamily: 'Pluto',
-			src: `url("${githubPrefix}/fonts/Pluto/HVD Fonts - PlutoRegular.otf") format("opentype")`
+			fontFamily: 'JosefinSans',
+			src: `url("${githubPrefix}/fonts/JosefinSans/JosefinSans-Regular.ttf") format("truetype")`
 		},
 		{
 			fontWeight: '500',
-			fontFamily: 'Pluto',
-			src: `url("${githubPrefix}/fonts/Pluto/HVD Fonts - PlutoMedium.otf") format("opentype")`
+			fontFamily: 'JosefinSans',
+			src: `url("${githubPrefix}/fonts/JosefinSans/JosefinSans-SemiBold.ttf") format("truetype")`
 		},
 		{
 			fontWeight: 'bold',
-			fontFamily: 'Pluto',
-			src: `url("${githubPrefix}/fonts/Pluto/HVD Fonts - PlutoBold.otf") format("opentype")`
+			fontFamily: 'JosefinSans',
+			src: `url("${githubPrefix}/fonts/JosefinSans/JosefinSans-Bold.ttf") format("truetype")`
 		}
 	],
 	container: {
-        height: '100vh',
-        overflowX: 'hidden',
-        overflowY: 'scroll'
+        height: '100vh'
 	},
 	sidebar: {
 		zIndex: '5 !important',
